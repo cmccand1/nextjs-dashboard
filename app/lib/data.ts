@@ -1,8 +1,13 @@
 import { prisma } from './prisma';
 import { formatCurrency } from './utils';
-import { InvoiceForm, InvoicesTable } from './definitions';
+import {
+  InvoiceForm,
+  InvoicesTable,
+  LatestInvoice,
+  Revenue,
+} from './definitions';
 
-export async function fetchRevenue() {
+export async function fetchRevenue(): Promise<Revenue[]> {
   try {
     // Artificially delay a response for demo purposes.
     // Don't do this in production :)
@@ -13,14 +18,14 @@ export async function fetchRevenue() {
 
     // console.log('Data fetch completed after 3 seconds.');
 
-    return data;
+    return data as Revenue[];
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch revenue data.');
   }
 }
 
-export async function fetchLatestInvoices() {
+export async function fetchLatestInvoices(): Promise<LatestInvoice[]> {
   try {
     // Include a simulated delay to practice streaming dynamic components
     // console.log('Fetching invoice data...');
@@ -46,13 +51,13 @@ export async function fetchLatestInvoices() {
 
     // console.log('Data fetch completed after 3 seconds.');
 
-    return data.map(invoice => ({
+    return data.map((invoice: any) => ({
       id: invoice.id,
       amount: formatCurrency(invoice.amount),
       name: invoice.customer.name,
       image_url: invoice.customer.image_url,
       email: invoice.customer.email,
-    }));
+    })) as LatestInvoice[];
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch the latest invoices.');
@@ -172,7 +177,7 @@ export async function fetchFilteredInvoices(
     });
 
     // Transform the data to match the expected format
-    return invoices.map(invoice => ({
+    return invoices.map((invoice: any) => ({
       id: invoice.id,
       customer_id: invoice.customer_id,
       amount: invoice.amount,
@@ -315,14 +320,14 @@ export async function fetchFilteredCustomers(query: string) {
       },
     });
 
-    return customers.map(customer => {
+    return customers.map((customer: any) => {
       const totalInvoices = customer.invoices.length;
       const totalPending = customer.invoices
-        .filter(invoice => invoice.status === 'pending')
-        .reduce((sum, invoice) => sum + invoice.amount, 0);
+        .filter((invoice: any) => invoice.status === 'pending')
+        .reduce((sum: number, invoice: any) => sum + invoice.amount, 0);
       const totalPaid = customer.invoices
-        .filter(invoice => invoice.status === 'paid')
-        .reduce((sum, invoice) => sum + invoice.amount, 0);
+        .filter((invoice: any) => invoice.status === 'paid')
+        .reduce((sum: number, invoice: any) => sum + invoice.amount, 0);
 
       return {
         id: customer.id,
