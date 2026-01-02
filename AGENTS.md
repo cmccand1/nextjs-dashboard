@@ -36,11 +36,11 @@ commands and context:
   _(Contains: prisma commands, migration workflows)_
 
 - **Task: Code Style or Formatting**
-  -> Read `/agent_docs/coding_style_guidelines.md`
+  -> Read `/agent_docs/coding_style_conventions.md`
   _(Contains: prettier commands, formatting rules, linting)_
 
 - **Task: UI/Component Work**
-  -> Read `/agent_docs/ui_design_guidelines.md`
+  -> Read `/agent_docs/ui_design_conventions.md`
   _(Contains: component patterns, fonts, Tailwind conventions, design rules)_
 
 - **Task: Deployment or CI/CD**

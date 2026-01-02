@@ -9,6 +9,9 @@ const makeClient = () => {
   }).$extends(withAccelerate());
 };
 
+// Use ReturnType<typeof makeClient> to preserve the full, extended type information
+// of the Prisma Client (including models) when using extensions like Accelerate.
+// This prevents type loss that occurs when casting to a generic 'PrismaClient'.
 const globalForPrisma = globalThis as unknown as {
   prisma: ReturnType<typeof makeClient> | undefined;
 };
