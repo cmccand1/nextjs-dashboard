@@ -2,13 +2,17 @@
 
 - **App**: nextjs-dashboard
 - **Goal**: A starter Next.js App Router course
-- **Stack**: Next.js, Tailwind, Node, Prisma, Postgress
+- **Stack**: Next.js (App Router), Tailwind, Node, Prisma, Postgress
 
 ## Codebase Map
 
-- `/app`: Frontend routes
-- `/lib`: Shared utilities
-- `/agent_docs`: **Agent Knowledge Base** (See below)
+- `/app`: Application code including routes, components, and logic.
+    - `/app/dashboard`: Dashboard routes, including `/customers` and `/invoices`.
+    - `/app/lib`: Core logic, including data fetching, server actions, and utilities.
+    - `/app/ui`: UI components used across the application.
+- `/prisma`: Database schema definition (`schema.prisma`).
+- `/public`: Static assets such as images and icons.
+- `/agent_docs`: Agent Knowledge Base (Guides and workflows).
 
 ## Agent Knowledge Base (Context Loading)
 
@@ -17,33 +21,32 @@ commands and context:
 
 - **Task: Building or Running the project**
   -> Read `/agent_docs/building_and_running_the_project.md`
-  *(Contains: build/run commands, etc.)*
+  _(Contains: build/run commands, etc.)_
 
 - **Task: Working with Git**
   -> Read `/agent_docs/git_workflow.md`
-  *(Contains: conventional commit types, commit formatting rules)*
+  _(Contains: conventional commit types, commit formatting rules)_
 
 - **Task: Writing or Running Tests**
   -> Read `/agent_docs/testing_workflow.md`
-  *(Contains: test commands, suite structure, mocking strategy, etc.)*
+  _(Contains: test commands, suite structure, mocking strategy, etc.)_
 
 - **Task: Database or Schema Changes**
   -> Read `/agent_docs/database_workflow.md`
-  *(Contains: prisma commands, migration workflows)*
+  _(Contains: prisma commands, migration workflows)_
 
 - **Task: Code Style or Formatting**
-  -> Read `/agent_docs/formatting_workflow.md`
-  *(Contains: prettier commands, formatting rules)*
+  -> Read `/agent_docs/coding_style_guidelines.md`
+  _(Contains: prettier commands, formatting rules, linting)_
 
 - **Task: UI/Component Work**
-  -> Read `/agent_docs/ui_guidelines.md`
-  *(Contains: component library usage, CSS patterns, storybook commands)*
+  -> Read `/agent_docs/ui_design_guidelines.md`
+  _(Contains: component patterns, fonts, Tailwind conventions, design rules)_
 
 - **Task: Deployment or CI/CD**
   -> Read `/agent_docs/deployment.md`
-  *(Contains: env var requirements)*
+  _(Contains: env var requirements)_
 
 ## Core Rules
 
 1. **Load Context First**: Do not guess commands. Read the specific workflow file above before running code.
-2. **Trust the Tools**: Do not discuss style. If a linter exists, use it to fix errors.
